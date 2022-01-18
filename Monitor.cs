@@ -10,11 +10,13 @@ namespace Connectionmonitor
 
         private Timer _timer = null;
         private ConnectionState _currentState;
+        private int _intervalInSeconds = 5;
 
-        public Monitor(AuditLogger logger, EndpointTester tester)
+        public Monitor(AuditLogger logger, EndpointTester tester, int intervalInSeconds)
         {
             _logger = logger;
             _tester = tester;
+            _intervalInSeconds = intervalInSeconds;
         }
 
         public void StartMonitoring()
@@ -25,7 +27,7 @@ namespace Connectionmonitor
                 _timer.Dispose();
             }
             _logger.LogStart();
-            _timer = new Timer(5000);
+            _timer = new Timer(_intervalInSeconds * 1000);
             _timer.Elapsed += TimerFired;
             _timer.Start();
         }

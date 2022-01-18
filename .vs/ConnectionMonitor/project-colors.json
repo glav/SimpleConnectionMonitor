@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "1cf818d3-211d-4d58-9417-df26349d386d": {
+      "ProjectGuid": "1cf818d3-211d-4d58-9417-df26349d386d",
+      "DisplayName": "ConnectionMonitor",
+      "ColorIndex": 0
+    },
+    "81743971-15ea-4fed-9120-1691aa689ff0": {
+      "ProjectGuid": "81743971-15ea-4fed-9120-1691aa689ff0",
+      "DisplayName": "ConnectionMonitor",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

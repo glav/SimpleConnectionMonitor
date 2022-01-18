@@ -19,10 +19,19 @@ namespace Connectionmonitor
             }
 
             var endpointToMonitor = appConfig["monitorEndpoint"];
-			Console.WriteLine("Monitoring endpoint: [{0}]",endpointToMonitor);
+            int intervalValueInSeconds;
+            if (!int.TryParse(appConfig["checkIntervalInSeconds"],out intervalValueInSeconds))
+            {
+                intervalValueInSeconds = 5;
+            }
+
+
+            Console.WriteLine("Monitoring endpoint: [{0}]",endpointToMonitor);
+            Console.WriteLine("Check interval: {0} seconds",intervalValueInSeconds);
+
             Console.WriteLine("Starting");
             
-            var connMonitor = new Monitor(new AuditLogger(),EndpointTester.CreateEndpointTester(endpointToMonitor));
+            var connMonitor = new Monitor(new AuditLogger(),EndpointTester.CreateEndpointTester(endpointToMonitor), intervalValueInSeconds);
             connMonitor.StartMonitoring();
             Console.WriteLine("Started\n");
 
